@@ -88,7 +88,9 @@ const Campaign = ({ campaignDetails }) => {
         {description}
       </div>
       <h3></h3>
-      <MessageFlash color="green" header="Success!" msg={successMessage} />
+      {successMessage && (
+        <MessageFlash color="green" header="Success!" msg={successMessage} />
+      )}
       <Grid>
         <Grid.Row>
           <Grid.Column width={10}>{renderCards()}</Grid.Column>
