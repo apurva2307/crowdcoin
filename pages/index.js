@@ -34,6 +34,8 @@ const getCampDetails = async (address) => {
 const Home = ({ campaignsList }) => {
   const [items, setItems] = useState([]);
   const [msgFlash, setMsgFlash] = useState(false);
+  const [metamaskWarning, setMetamaskWarning] = useState("");
+
   const router = useRouter();
   const renderCampaigns = () => {
     const newitems = campaignsList.map((item) => {
@@ -51,6 +53,20 @@ const Home = ({ campaignsList }) => {
     });
     setItems(newitems);
   };
+  useEffect(() => {
+    const getAccount = async () => {
+      const accounts = await web3.eth.getAccounts();
+      if (accounts.length == 0) {
+        setMetamaskWarning(
+          "Kindly install metamask in your browser and connect your account to Rinkeby network to use this application propoerly."
+        );
+      }
+      if (accounts.length > 0) {
+        setMetamaskWarning("");
+      }
+    };
+    getAccount();
+  }, [metamaskWarning]);
   useEffect(() => {
     renderCampaigns();
   }, [campaignsList]);
@@ -74,6 +90,9 @@ const Home = ({ campaignsList }) => {
           header="Success!"
           msg="New campaign created successfully."
         />
+      )}
+      {metamaskWarning && (
+        <MessageFlash color="red" header="Warning!!" msg={metamaskWarning} />
       )}
       <Link href="/campaigns/new">
         <a>
