@@ -28,7 +28,7 @@ const getCampDetails = async (address) => {
       "ether"
     )} ether)`,
     fluid: true,
-    style: { margin: "10px 0" },
+    style: { margin: "10px 0", overflowWrap: "break-word" },
   };
 };
 const Home = ({ campaignsList }) => {
