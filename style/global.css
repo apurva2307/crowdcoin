@@ -1,0 +1,23 @@
+.camp-address,
+.camp-about {
+  font-size: 16px;
+  padding: 4px 0;
+}
+.flash {
+  z-index: 20;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 18%;
+  margin: auto;
+  display: none;
+}
+.show {
+  display: block;
+}
+.ether {
+  margin-top: -12px !important;
+  margin-left: 15px !important;
+  color: rgb(214, 7, 49);
+  font-size: 14px;
+}
